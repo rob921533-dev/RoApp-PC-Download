@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RoApp — stay close</title>
+<title>RoApp — download</title>
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,11 +14,10 @@
     --ink:#23272B;
     --cardinal:#C0483E;
     --cardinal-deep:#9E362E;
-    --cardinal-tint:#F7E9E7;
+    --cardinal-light:#E0958A;
     --beak:#E8C275;
     --slate:#3A4750;
-    --slate-soft:#6B767D;
-    --line:#DEE2E4;
+    --line:#D7DCDE;
   }
 
   *{box-sizing:border-box;}
@@ -37,45 +36,59 @@
 
   a{color:inherit;}
 
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
   /* ---------- NAV ---------- */
   nav{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:26px 32px;
+    padding:24px 32px;
     max-width:1120px;
     margin:0 auto;
   }
   .brand{
     display:flex;
     align-items:center;
-    gap:11px;
+    gap:12px;
     font-family:'Fraunces',serif;
     font-weight:600;
-    font-size:19px;
+    font-size:20px;
     letter-spacing:-0.01em;
   }
   .brand img{
-    width:32px;
-    height:32px;
+    width:34px;
+    height:34px;
     display:block;
   }
-  .nav-cta{
+  .nav-link{
     text-decoration:none;
-    font-size:14.5px;
-    font-weight:600;
-    color:var(--cardinal-deep);
+    font-size:15px;
+    font-weight:500;
+    color:var(--slate);
+    padding:10px 18px;
+    border:1.5px solid var(--ink);
+    border-radius:999px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .nav-link:hover{
+    background:var(--ink);
+    color:var(--snow);
   }
 
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    padding:48px 32px 30px;
+    padding:56px 32px 40px;
     max-width:1120px;
     margin:0 auto;
     display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:32px;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:24px;
     align-items:center;
     overflow:hidden;
   }
@@ -95,23 +108,19 @@
 
   .hero-copy{position:relative; z-index:1;}
   .kicker{
-    display:inline-block;
-    font-size:14px;
+    font-size:15px;
     color:var(--cardinal-deep);
     font-weight:600;
-    background:var(--cardinal-tint);
-    padding:7px 14px;
-    border-radius:999px;
-    margin:0 0 22px;
+    margin:0 0 18px;
   }
   h1{
     font-family:'Fraunces',serif;
     font-weight:600;
-    font-size:clamp(38px, 5vw, 62px);
-    line-height:1.04;
+    font-size:clamp(40px, 5.4vw, 68px);
+    line-height:1.02;
     letter-spacing:-0.02em;
     margin:0 0 22px;
-    max-width:11.5ch;
+    max-width:11ch;
   }
   h1 em{
     font-style:italic;
@@ -119,10 +128,15 @@
   }
   .sub{
     font-size:18px;
-    line-height:1.6;
+    line-height:1.55;
     color:var(--slate);
-    max-width:42ch;
-    margin:0 0 32px;
+    max-width:44ch;
+    margin:0 0 34px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
   }
   .btn-primary{
     display:inline-flex;
@@ -133,7 +147,7 @@
     text-decoration:none;
     font-weight:600;
     font-size:16px;
-    padding:16px 30px;
+    padding:15px 26px;
     border-radius:12px;
     border:1.5px solid var(--cardinal);
     transition:transform .15s ease, background .15s ease;
@@ -143,77 +157,52 @@
     border-color:var(--cardinal-deep);
     transform:translateY(-1px);
   }
+  .btn-ghost{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:transparent;
+    color:var(--ink);
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    padding:15px 26px;
+    border-radius:12px;
+    border:1.5px solid var(--line);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .btn-ghost:hover{
+    border-color:var(--ink);
+    transform:translateY(-1px);
+  }
 
   .hero-bird{
     position:relative;
     z-index:1;
     display:flex;
     justify-content:center;
-    align-items:center;
-  }
-  .hero-bird::before{
-    content:"";
-    position:absolute;
-    width:280px;
-    height:280px;
-    background:radial-gradient(circle, var(--cardinal-tint) 0%, transparent 70%);
-    z-index:-1;
   }
   .hero-bird img{
-    width:min(300px, 85%);
-    filter:drop-shadow(0 26px 42px rgba(35,39,43,0.18));
-  }
-
-  /* ---------- FEATURES ---------- */
-  .features{
-    max-width:1120px;
-    margin:20px auto 0;
-    padding:60px 32px;
-    border-top:1.5px solid var(--line);
-  }
-  .features-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:36px;
-  }
-  .feature-num{
-    font-family:'Fraunces',serif;
-    font-size:15px;
-    font-weight:600;
-    color:var(--cardinal);
-    margin-bottom:14px;
-  }
-  .feature h3{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    font-size:21px;
-    margin:0 0 10px;
-    letter-spacing:-0.01em;
-  }
-  .feature p{
-    font-size:15px;
-    line-height:1.65;
-    color:var(--slate);
-    margin:0;
-    max-width:32ch;
+    width:min(340px, 90%);
+    filter:drop-shadow(0 24px 40px rgba(35,39,43,0.16));
   }
 
   /* ---------- DOWNLOAD ---------- */
   .downloads{
-    padding:20px 32px 90px;
+    padding:70px 32px 90px;
     max-width:1120px;
     margin:0 auto;
   }
   .downloads-head{
     max-width:52ch;
-    margin-bottom:36px;
+    margin-bottom:40px;
   }
   .downloads-head h2{
     font-family:'Fraunces',serif;
     font-weight:600;
-    font-size:32px;
+    font-size:34px;
     letter-spacing:-0.01em;
-    margin:0 0 10px;
+    margin:0 0 12px;
   }
   .downloads-head p{
     color:var(--slate);
@@ -224,22 +213,17 @@
 
   .platform-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr 1fr 1fr;
     gap:20px;
   }
   .platform-card{
     background:#fff;
     border:1.5px solid var(--line);
-    border-radius:20px;
+    border-radius:18px;
     padding:32px;
     display:flex;
     flex-direction:column;
     gap:20px;
-    transition:border-color .15s ease, box-shadow .15s ease;
-  }
-  .platform-card:hover{
-    border-color:var(--cardinal);
-    box-shadow:0 8px 24px rgba(192,72,62,0.08);
   }
   .platform-top{
     display:flex;
@@ -264,7 +248,7 @@
   }
   .platform-meta{
     font-size:14px;
-    color:var(--slate-soft);
+    color:var(--slate);
   }
   .platform-desc{
     font-size:15px;
@@ -296,10 +280,16 @@
     color:var(--snow);
   }
   .dl-linux:hover{background:var(--cardinal-deep); transform:translateY(-1px);}
+  .dl-android{
+    background:var(--beak);
+    color:var(--ink);
+    border:1.5px solid var(--beak);
+  }
+  .dl-android:hover{background:#dcb35d; border-color:#dcb35d; transform:translateY(-1px);}
 
   .filesize{
     font-size:13px;
-    color:var(--slate-soft);
+    color:var(--slate);
     text-align:center;
   }
 
@@ -317,7 +307,7 @@
     gap:16px;
     flex-wrap:wrap;
     font-size:14px;
-    color:var(--slate-soft);
+    color:var(--slate);
   }
   .footer-brand{
     display:flex;
@@ -330,11 +320,10 @@
   .footer-brand img{width:22px; height:22px;}
 
   @media (max-width: 760px){
-    .hero{grid-template-columns:1fr; padding-top:26px;}
+    .hero{grid-template-columns:1fr; padding-top:32px;}
     .hero-bird{order:-1;}
-    .hero-bird img{width:170px;}
+    .hero-bird img{width:180px;}
     h1{max-width:none;}
-    .features-grid{grid-template-columns:1fr; gap:28px;}
     .platform-grid{grid-template-columns:1fr;}
     nav{padding:20px;}
   }
@@ -344,46 +333,29 @@
 
 <nav>
   <div class="brand"><img src="logo.png" alt=""> RoApp</div>
-  <a class="nav-cta" href="#downloads">Download</a>
+  <a class="nav-link" href="#downloads">Download</a>
 </nav>
 
 <section class="hero">
   <div class="snowfield" id="snowfield"></div>
   <div class="hero-copy">
-    <span class="kicker">Now on Windows and Linux</span>
-    <h1>Stay close to the people who <em>matter</em>.</h1>
-    <p class="sub">RoApp is where your closest circles hang out — quick chats, shared spaces, and a feed that isn't trying to keep you scrolling forever.</p>
-    <a class="btn-primary" href="#downloads">Get RoApp</a>
+    <p class="kicker">Now available for Windows and Linux</p>
+    <h1>A sharp little app with a <em>cardinal</em> attitude.</h1>
+    <p class="sub">RoApp is small, fast, and built to just work. Pick your platform below and you're two clicks from running it.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#downloads">Get RoApp</a>
+      <a class="btn-ghost" href="#downloads">See system requirements</a>
+    </div>
   </div>
   <div class="hero-bird">
     <img src="logo.png" alt="RoApp cardinal icon">
   </div>
 </section>
 
-<section class="features">
-  <div class="features-grid">
-    <div class="feature">
-      <div class="feature-num">Chats</div>
-      <h3>Talk to people, not a feed</h3>
-      <p>Fast, simple messaging with the people you actually talk to — no algorithm deciding what you see first.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-num">Spaces</div>
-      <h3>A place for your circle</h3>
-      <p>Build a space for your friend group, your team, or your hobby, and set it up the way you actually want it.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-num">Presence</div>
-      <h3>See who's around</h3>
-      <p>Know who's online without the noise — no forced notifications, no pressure to perform for anyone.</p>
-    </div>
-  </div>
-</section>
-
 <section class="downloads" id="downloads">
   <div class="downloads-head">
     <h2>Choose your platform</h2>
-    <p>Both builds come from the same release. Windows gets a standalone installer; Linux gets a portable AppImage that runs without installing anything.</p>
+    <p>Both builds are packaged straight from the same release. Windows users get a standalone installer; Linux users get a portable AppImage that runs on most distributions without installing anything.</p>
   </div>
 
   <div class="platform-grid">
@@ -430,6 +402,34 @@
       </a>
       <div class="filesize">RoApp-x86_64.AppImage · 39.7 MB</div>
     </div>
+
+    <div class="platform-card">
+      <div class="platform-top">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 9v6.5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9H6Z" fill="#23272B"/>
+            <path d="M8.5 5.5l-1.4-1.7M15.5 5.5l1.4-1.7" stroke="#23272B" stroke-width="1.4" stroke-linecap="round"/>
+            <rect x="5" y="9" width="14" height="1.6" fill="#23272B"/>
+            <circle cx="9.3" cy="6.8" r="0.9" fill="#23272B"/>
+            <circle cx="14.7" cy="6.8" r="0.9" fill="#23272B"/>
+            <rect x="3.6" y="10.5" width="1.8" height="4.5" rx="0.9" fill="#23272B"/>
+            <rect x="18.6" y="10.5" width="1.8" height="4.5" rx="0.9" fill="#23272B"/>
+            <rect x="8.5" y="17" width="1.8" height="4" rx="0.9" fill="#23272B"/>
+            <rect x="13.7" y="17" width="1.8" height="4" rx="0.9" fill="#23272B"/>
+          </svg>
+        </div>
+        <div>
+          <div class="platform-name">Android</div>
+          <div class="platform-meta">APK · sideload install</div>
+        </div>
+      </div>
+      <p class="platform-desc">Download the APK, then open it on your phone. You may need to allow installs from this source in your settings.</p>
+      <a class="platform-download dl-android" href="https://apk.e-droid.net/apk/app4103631-o7h4wv.apk?v=9">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download for Android
+      </a>
+      <div class="filesize">RoApp.apk</div>
+    </div>
   </div>
 </section>
 
@@ -442,7 +442,7 @@
 
 <script>
   const field = document.getElementById('snowfield');
-  const count = window.innerWidth < 760 ? 14 : 24;
+  const count = window.innerWidth < 760 ? 14 : 26;
   for (let i = 0; i < count; i++) {
     const dot = document.createElement('span');
     const size = 3 + Math.random() * 5;
@@ -457,3 +457,4 @@
 
 </body>
 </html>
+
